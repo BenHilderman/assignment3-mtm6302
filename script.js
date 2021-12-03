@@ -16,6 +16,7 @@ let future = null
 let id = 0
 
 future = localStorage.getItem('future')
+data = localStorage.getItem('data')
 
 //start timer button
 $header.innerHTML = `<button class="start" id="start">Start Timer</button>`;
@@ -121,7 +122,9 @@ function timerFunction() {
                         '<div>' + h + '<span>hours</span></div>' +
                         '<div>' + m + '<span>minutes</span></div>' +
                         '<div>' + s + '<span>seconds</span></div>';
-    
+
+                        
+
                         localStorage.setItem('future', future)
                         console.log(localStorage.getItem('future'))
             
@@ -130,6 +133,7 @@ function timerFunction() {
 function incrementTimer() {
     console.log(data)
     $inputtitle.innerHTML += (data)
+    localStorage.setItem('data', data)
 }
 //reset timer function
 function resetTimerButton() {
