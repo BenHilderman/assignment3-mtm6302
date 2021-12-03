@@ -123,7 +123,17 @@ function timerFunction() {
                         '<div>' + m + '<span>minutes</span></div>' +
                         '<div>' + s + '<span>seconds</span></div>';
 
-                        
+console.log(d)
+
+                        if (s === 0) {
+                            if (h === 0) {
+                                if (d === 0) {
+                                    if (m === 0) {
+                                    timer.innerHTML = 'Timer Is Finished!'
+                                    }
+                                }
+                            }
+                        }
 
                         localStorage.setItem('future', future)
                         console.log(localStorage.getItem('future'))
@@ -166,9 +176,10 @@ if(localStorage.getItem('future') != null) {
     $yeartitle.style.display = 'none'
     $maintitle.style.display = 'none'
     $title.style.display = 'none'
-    timerFunction();
+    id = setInterval(function() {
+        timerFunction()
+    })
     incrementTimer()
-    console.log('test')
 }else{
     // formfunction();
     start.style.visibility = "block"
