@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>MTM6302-ASSIGNMENT-3</title>
+      <link rel="stylesheet" href="style.css">
+      <style>
+         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500&display=swap');
+      </style>
+   </head>
+   <body>
+      <div class="container" id='container'>
+         <form id=form class="form">
+            <h2 class="maintitle" id="maintitle">Title</h2>
+            <div class="inputtitle" id="inputtitle"></div>
+            <!-- years -->
+            <input type="text" id="title" class="title">
+            <h2 id="yeartitle">Select a Year</h2>
+            <select name="year" id="year" class="year">
+               <option value=" 2021" selected>2021</option>
+               <option value=" 2022">2022</option>
+               <option value=" 2023">2023</option>
+               <option value=" 2024">2024</option>
+               <option value=" 2025">2025</option>
+               <option value=" 2026">2026</option>
+               <option value=" 2027">2027</option>
+               <option value=" 2028">2028</option>
+               <option value=" 2029">2029</option>
+               <option value=" 2030">2030</option>
+            </select>
+            <!-- months -->
+            <h2 id="monthtitle">Select a Month</h2>
+            <select name="month" id="month" class="month">
+               <option value="January " selected>January</option>
+               <option value="February ">February</option>
+               <option value="March ">March</option>
+               <option value="April ">April</option>
+               <option value="May ">May</option>
+               <option value="June ">June</option>
+               <option value="July ">July</option>
+               <option value="August ">August</option>
+               <option value="September ">September</option>
+               <option value="October ">October</option>
+               <option value="November ">November</option>
+               <option value="December ">December</option>
+            </select>
+            <!-- days -->
+            <h2 id="daytitle">Select a Day</h2>
+            <select name="day" id="day" class="day"></select><br>
+      </div>
+      <div class="header" id="header"></div>
+      </div>
+      <div id="timer">
+      </div>
+      <button class="reset" id="resetbutton">Reset Timer</button>
+      </form>
+      <script src='script.js'></script>
+   </body>
+</html>
