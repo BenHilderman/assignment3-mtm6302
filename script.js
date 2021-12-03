@@ -101,7 +101,9 @@ start.addEventListener("click", function () {
 function timerFunction() {
                     //display reset button 
                     $resetbutton.style.display = 'block'
-                    future = Date.parse(`${$month.value}${$day.value}${$year.value}`);
+                    if (future === null) {
+                        future = Date.parse(`${$month.value}${$day.value}${$year.value}`);
+                    }
                     now = new Date();
                     diff = future - now;
                     //timer
