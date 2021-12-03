@@ -12,13 +12,23 @@ const $daytitle = document.getElementById("daytitle")
 const $maintitle = document.getElementById("maintitle")
 const $inputtitle = document.getElementById("inputtitle")
 let data = ''
-let id = 0;
+let difference = null
+let id = 0
+let futurefirst = null
+
+localStorage.getItem('d')
+localStorage.getItem('m')
+localStorage.getItem('h')
+localStorage.getItem('s')
+localStorage.getItem('difference')
+
+init();
 
 //hide reset button
 $resetbutton.style.display = 'none'
 
 //months
-$month.addEventListener('click', function() {
+$month.addEventListener('click', function formfunction() {
 	function printDays() {
 		if ($month.value == 'April ' || $month.value == 'June ' || $month.value == 'September ' || $month.value == 'November ') {
 			let month30days = []
@@ -49,7 +59,7 @@ $header.innerHTML = `<button class="start" id="start">Start Timer</button>`;
 start.style.visibility = "block"
 
 //when user clicks start timer button
-start.addEventListener("click", function() {
+start.addEventListener("click", function timerFunction() {
 	data = document.getElementById('title').value;
 	//hide start button after click
 	start.style.visibility = "hidden";
@@ -75,15 +85,16 @@ start.addEventListener("click", function() {
 
 		//if date chosen is a date in the future
 		if (Date.parse(`${$month.value}${$day.value}${$year.value}`) > new Date()) {
-
 			//timer function
 			id = setInterval(function() {
 				//display reset button 
 				$resetbutton.style.display = 'block'
-				future = Date.parse(`${$month.value}${$day.value}${$year.value}`);
+                if (futurefirst === null){
+                    futurefirst = Date.parse(`${$month.value}${$day.value}${$year.value}`);
+                }
+                let future = futurefirst
 				now = new Date();
 				diff = future - now;
-				console.log(`${$month.value}${$day.value}${$year.value}`)
 				//timer
 				days = Math.floor(diff / (1000 * 60 * 60 * 24));
 				hours = Math.floor(diff / (1000 * 60 * 60));
@@ -99,6 +110,15 @@ start.addEventListener("click", function() {
 					'<div>' + h + '<span>hours</span></div>' +
 					'<div>' + m + '<span>minutes</span></div>' +
 					'<div>' + s + '<span>seconds</span></div>';
+
+                    localStorage.setItem('d', days)
+                    localStorage.setItem('h', hours)
+                    localStorage.setItem('m', mins)
+                    localStorage.setItem('s', secs)
+                    localStorage.setItem('s', secs)
+                    
+                    localStorage.setItem('futuredate', future)
+                    console.log(localStorage.getItem('futuredate'))
 			})
 			setTimeout(function() {
 				$inputtitle.innerHTML += (data)
@@ -117,7 +137,7 @@ start.addEventListener("click", function() {
 	}
 })
 
-//reset timer funtion
+//reset timer function
 function resetTimerButton() {
 	$resetbutton.style.display = 'none'
 	$day.value = null
@@ -125,4 +145,20 @@ function resetTimerButton() {
 	$year.value = null
 	data = null
 	clearInterval(id)
+    localStorage.clear()
+}
+
+function init(){
+    console.log(localStorage.getItem('futuredate'))
+    console.log(localStorage.getItem('d'))
+if(localStorage.getItem('futuredate') != null) {
+    // timerfunction();
+    //when futuredate is saved
+    console.log('previous timer')
+
+}else{
+    // formfunction();
+    //when futuredate is not saved
+    console.log('no timer')
+}
 }
